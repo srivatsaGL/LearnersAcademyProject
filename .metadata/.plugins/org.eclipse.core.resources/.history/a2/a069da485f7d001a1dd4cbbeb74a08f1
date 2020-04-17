@@ -1,0 +1,92 @@
+package com.academy.controller;
+
+import java.util.List;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.PATCH;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import com.academy.service.ClassService;
+import com.academy.service.impl.ClassServiceImpl;
+import com.model.pojo.Classes;
+import com.model.pojo.Student;
+import com.model.pojo.Subject;
+
+@Path("/class")
+public class ClassController {
+	
+	ClassService service = new ClassServiceImpl();
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Classes> getAllClasses() {
+		return service.getAllClasses();
+	}
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Classes createClass(Classes classes) {
+		return service.createClasses(classes);
+	}
+
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Classes getClassById(@PathParam("id") int id) {
+		return service.getClassById(id);
+	}
+	
+	@GET
+	@Path("/subject/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Subject> getAllSubject(@PathParam("id")int id){
+		Classes classes = getClassById(id);
+		List<Subject> subjects = classes.getSubjectList();
+		return subjects;
+	}
+	
+	@GET
+	@Path("/student/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Student> getAllStudents(@PathParam("id")int id){
+		return service.getAllStudents(id);
+	}
+
+	@PATCH
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Classes updateClass(Classes classes) {
+		return service.updateClass(classes);
+	}
+	
+	@PATCH
+	@Path("/subject")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Subject> updateSubject(Classes classes){
+		return service.updateSubject(classes);
+	}
+	
+	@PATCH
+	@Path("/student")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Student> updateStudent(Classes classes){
+		return service.updateStudent(classes);
+	}
+
+	@DELETE
+	@Path("/{id}")
+	public void removeClass(@PathParam("id") int id) {
+		service.removeClass(id);
+	}
+	
+	
+}

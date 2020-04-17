@@ -1,0 +1,62 @@
+package com.academy.service.impl;
+
+import java.util.List;
+
+import com.academy.DAO.ClassDAO;
+import com.academy.DAO.impl.ClassDAOImpl;
+import com.academy.service.ClassService;
+import com.model.pojo.Classes;
+import com.model.pojo.Student;
+import com.model.pojo.Subject;
+
+public class ClassServiceImpl implements ClassService{
+	
+	ClassDAO dao = new ClassDAOImpl();
+	
+	@Override
+	public Classes createClasses(Classes classes) {
+		return dao.createClasses(classes);
+	}
+
+	@Override
+	public Classes getClassById(int id) {
+		// TODO Auto-generated method stub
+		return dao.getClassById(id);
+	}
+
+	@Override
+	public List<Classes> getAllClasses() {
+		// TODO Auto-generated method stub
+		return dao.getAllClasses();
+	}
+
+	@Override
+	public void removeClass(int id) {
+		// TODO Auto-generated method stub
+		dao.removeClass(id);
+	}
+
+	@Override
+	public Classes updateClass(Classes classes) {
+		// TODO Auto-generated method stub
+		return dao.updateClass(classes);
+	}
+
+	@Override
+	public List<Subject> updateSubject(Classes classes) {
+		// TODO Auto-generated method stub
+		return dao.updateSubject(classes);
+	}
+
+	@Override
+	public List<Student> getAllStudents(int id) {
+		// TODO Auto-generated method stub
+		return dao.getAllStudents(id);
+	}
+
+	@Override
+	public List<Student> updateStudent(Classes classes) {
+		// TODO Auto-generated method stub
+		return dao.updateStudent(classes);
+	}
+}

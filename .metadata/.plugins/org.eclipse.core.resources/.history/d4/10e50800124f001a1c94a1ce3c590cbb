@@ -1,0 +1,15 @@
+package com.pack;
+
+public class LoginHandler {
+            
+
+public boolean validateLogin(Login lo){
+            if(lo.getUsername().equals("admin") && lo.getPassword().equals("manager")){
+                        return true;
+            }
+            else{
+                        return false;
+            }
+}
+
+}

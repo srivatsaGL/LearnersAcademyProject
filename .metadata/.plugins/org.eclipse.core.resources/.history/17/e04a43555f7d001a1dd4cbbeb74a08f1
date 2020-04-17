@@ -1,0 +1,43 @@
+package com.academy.service.impl;
+
+import java.util.List;
+
+import com.academy.DAO.SubjectDAO;
+import com.academy.DAO.impl.SubjectDAOImpl;
+import com.academy.service.SubjectService;
+import com.model.pojo.Subject;
+
+public class SubjectServiceImpl implements SubjectService{
+	
+	SubjectDAO dao = new SubjectDAOImpl();
+	@Override
+	public Subject createSubject(Subject subject) {
+		// TODO Auto-generated method stub
+		return dao.createSubject(subject);
+	}
+
+	@Override
+	public Subject getSubjectById(int id) {
+		// TODO Auto-generated method stub
+		return dao.getSubjectById(id);
+	}
+
+	@Override
+	public List<Subject> getAllSubjectList() {
+		// TODO Auto-generated method stub
+		return dao.getAllSubjectList();
+	}
+
+	@Override
+	public void removeSubject(int id) {
+		// TODO Auto-generated method stub
+		dao.removeSubject(id);
+	}
+
+	@Override
+	public Subject updateSubject(Subject subject) {
+		// TODO Auto-generated method stub
+		return dao.updateSubject(subject);
+	}
+
+}

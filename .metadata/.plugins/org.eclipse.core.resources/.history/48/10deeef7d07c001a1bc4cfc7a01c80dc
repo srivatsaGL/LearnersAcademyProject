@@ -1,0 +1,19 @@
+package com.model.pojo;
+
+public class Student {
+	int StudentId;
+	String StudentName;
+	public int getStudentId() {
+		return StudentId;
+	}
+	public void setStudentId(int id) {
+		this.StudentId = id;
+	}
+	public String getStudentName() {
+		return StudentName;
+	}
+	public void setStudentName(String name) {
+		this.StudentName = name;
+	} 
+}
+
